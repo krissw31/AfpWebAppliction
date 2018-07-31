@@ -16,6 +16,14 @@
         <servlet-name>BienvenueServelet</servlet-name>
         <servlet-class>fr.kriss.afp.controller.BienvenueServelet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FolderServlet</servlet-name>
+        <servlet-class>fr.kriss.afp.controller.FolderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FolderPublisherServlet</servlet-name>
+        <servlet-class>fr.kriss.afp.controller.FolderPublisherServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MyTestServlet</servlet-name>
         <url-pattern>/test</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>BienvenueServelet</servlet-name>
         <url-pattern>/BienvenueServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FolderServlet</servlet-name>
+        <url-pattern>/FolderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FolderPublisherServlet</servlet-name>
+        <url-pattern>/FolderPublisherServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

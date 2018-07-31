@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author kriss
  */
-public class LoginServlet extends HttpServlet {
+public class FolderPublisherServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,9 +33,11 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            ServletContext context = this.getServletContext();
-            RequestDispatcher req = context.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+             ServletContext context = this.getServletContext();
+            RequestDispatcher req = context.getRequestDispatcher("/WEB-INF/jsp/publisher.jsp");
             req.forward(request, response);
+            /* TODO output your page here. You may use following sample code. */
+           
         }
     }
 

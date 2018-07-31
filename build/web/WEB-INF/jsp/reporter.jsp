@@ -12,6 +12,6 @@
         <title>page d'accueil</title>
     </head>
     <body>
-        <h1>Bienvenue <% request.getParameter("name")%></h1>
+        <h1>Bienvenue</h1>
     </body>
 </html>

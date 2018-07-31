@@ -8,12 +8,14 @@ package fr.kriss.afp.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import javax.jms.Session;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,20 +34,34 @@ public class LoginVerifyServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        // Variable contenant le chemin vers la vue
+        String view;
+
         // Récuperation des parametres de la requete
         String nameParameterValue = request.getParameter("name");
         String passwordParameterValue = request.getParameter("password");
+
         if ("kriss".equals(nameParameterValue) && "kriss".equals(passwordParameterValue)) {
-            ServletContext context = this.getServletContext();
-            RequestDispatcher req = context.getRequestDispatcher("/WEB-INF/jsp/bienvenue.jsp");
-            req.forward(request, response);
+            // Les IDs de connexion sont OK
+            view = "/WEB-INF/jsp/bienvenue.jsp";
+
+            // Stocker les infos de login dans la session utilisateur
+            HttpSession session = request.getSession();
+            session.setAttribute("loginName", nameParameterValue);
+            
+            
+
         } else {
             // Ajout du message d'erreur
             request.setAttribute("error_message", "Identifiants incorrects !!!");
-            ServletContext context = this.getServletContext();
-            RequestDispatcher req = context.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-            req.forward(request, response);
+            view = "/WEB-INF/jsp/login.jsp";
         }
+
+        // Redirection vers la vue
+        ServletContext context = this.getServletContext();
+        RequestDispatcher req = context.getRequestDispatcher(view);
+        req.forward(request, response);
 
     }
 

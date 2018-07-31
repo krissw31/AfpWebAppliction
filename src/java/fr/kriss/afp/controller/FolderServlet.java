@@ -5,8 +5,12 @@
  */
 package fr.kriss.afp.controller;
 
+import com.sun.faces.config.WebConfiguration;
+import fr.kriss.afp.domain.Dispatch;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.time.LocalDateTime;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -18,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author kriss
  */
-public class LoginServlet extends HttpServlet {
+public class FolderServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,12 +35,20 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        
+            // Creer une bean de type Dispatch (a fin de test)
+            Dispatch testDispatch = new Dispatch(LocalDateTime.now());
+            testDispatch.setTitle("Titre de test");
+            testDispatch.setContent("Contenu de test");
+            testDispatch.setUser("Toto");
+            
+            // Mettre ce bean dans les attributs de la requete
+            request.setAttribute("myDispatch", testDispatch);
+        
             ServletContext context = this.getServletContext();
-            RequestDispatcher req = context.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+            RequestDispatcher req = context.getRequestDispatcher("/WEB-INF/jsp/folder.jsp");
             req.forward(request, response);
-        }
+           
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

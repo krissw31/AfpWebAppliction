@@ -1,6 +1,6 @@
 <%-- 
-    Document   : bienvenue
-    Created on : 26 juil. 2018, 16:45:36
+    Document   : publisher
+    Created on : 27 juil. 2018, 14:33:51
     Author     : kriss
 --%>
 
@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>publisher.jsp</title>
     </head>
     <body>
-        <h1>Bienvenue </h1>     
+        <h1>Hello World!</h1>
     </body>
 </html>
